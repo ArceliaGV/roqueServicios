@@ -1,5 +1,5 @@
 <?php
-require_once "db.php"; // Importa la conexión
+require_once "conexion_db.php"; // Importa la conexión
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user["password"])) {
-            echo "Login exitoso. Bienvenido, " . htmlspecialchars($email);
+            echo "Credenciales Correctas!, Bienvenido " . htmlspecialchars($email);
         } else {
             echo "Credenciales incorrectas.";
         }
